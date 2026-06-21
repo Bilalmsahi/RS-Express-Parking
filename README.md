@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="frontend/src/assets/logo.png" alt="RS Express Parking" width="180"/>
+<img src="logo.png" alt="RS Express Parking" width="180"/>
 
 # ✈️ RS Express Parking — Airport Parking Booking Platform
 
