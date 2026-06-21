@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        td {
+            border-bottom: 1px solid #000;
+            padding: 4px 0;
+        }
+        .no-border td {
+            border: none;
+        }
+        .car-diagram {
+            width: 200px;
+        }
+        .signature-row {
+            height: 45px;
+        }
+        .section-title {
+            font-size: 16px;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Details Table -->
+    <table>
+        <tr><td>Booking Reference: {{ booking.booking_id }}</td></tr>
+        <tr><td>Dates: {{ booking.departure_time|date:"F j, Y H:i" }} - {{ booking.return_time|date:"F j, Y H:i" }}</td></tr>
+        <tr><td>Customer Name: {{ booking.first_name }} {{ booking.last_name }}</td></tr>
+        <tr><td>Phone Number: {{ booking.contact_no }}</td></tr>
+        <tr><td>Vehicle Registration: {{ booking.car_registration_no }}</td></tr>        
+        <tr><td>Vehicle: {{ booking.car_manufacturer }}</td></tr>
+        <tr><td>Vehicle Color: {{ booking.car_colour }}</td></tr>
+        <tr><td>Departure Airport Terminal: {{ booking.departure_terminal }}</td></tr>
+        <tr><td>Return Terminal: {{ booking.return_terminal }}</td></tr>
+        <tr><td>Departure Flight Number: {{ booking.departure_flight_number }}</td></tr>
+        <tr><td>Return Flight Number: {{ booking.return_flight_number }}</td></tr>
+        <tr><td>Created: {{ booking.created_at|date:"F j, Y \a\t H:i" }}</td></tr>
+        <tr><td>Car Mileage: </td></tr>
+        <tr><td>Addons: {{ add_ons|join:", " }}</td></tr>
+    </table>
+
+    <!-- Valuables Table -->
+    <table >
+        <tr>
+            <td style="width: 30%;">Valuables Left In Car:</td>
+            <td>&#x274F; SatNav</td>
+            <td>&#x274F; Mobile</td>
+            <td>&#x274F; Sunglasses</td>
+            <td>&#x274F; Other</td>
+        </tr>
+    </table>
+
+    <!-- Comments Section -->
+    <table>
+        <tr style="height: 50px;">
+            <td>Comments: {{ booking.note }}</td>
+        </tr>
+    </table>
+
+    <!-- Car Diagram and Signatures Section -->
+    <table class="no-border" style="margin-top: 20px;">
+        <tr>
+            <td style="width: 50%; text-align: center;">
+                <img src="{{ image_data }}" class="car-diagram" alt="Car Diagram" style="display: block; margin: auto;">
+            </td>
+            <td style="width: 50%; vertical-align: top;">
+                <table class="no-border">
+                    <!-- Delivery Section -->
+                    <tr>
+                        <td style="border-bottom: 1px solid #000;" class="section-title">Customer Vehicle Delivery</td>
+                    </tr>
+                    <tr class="signature-row">
+                        <td style="border-bottom: 1px solid #000;">Signed By:</td>
+                    </tr>
+                    <tr class="signature-row">
+                        <td style="border-bottom: 1px solid #000;">Driver:</td>
+                    </tr>
+
+                    <!-- Collection Section -->
+                    <tr>
+                        <td style="border-bottom: 1px solid #000;" class="section-title">Customer Vehicle Collection</td>
+                    </tr>
+                    <tr class="signature-row">
+                        <td style="border-bottom: 1px solid #000;">Signed By:</td>
+                    </tr>
+                    <tr class="signature-row">
+                        <td style="border-bottom: 1px solid #000;">Driver:</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
